@@ -18,11 +18,11 @@
     (*(volatile unsigned int *)(AHB2_GPIOB_BASE + GPIO_OSPEEDR_OFFSET)) |= (0x11 << (PB3_SHIFT * 2)); //high speed
 
     while(1) {
-        (*(volatile unsigned int *)(AHB2_GPIOB_BASE + GPIO_BSRR_OFFSET)) |= (1 << PB3_SHIFT);	//set
+        (*(volatile unsigned int *)(AHB2_GPIOB_BASE + GPIO_BSRR_OFFSET)) |= (1 << PB3_SHIFT); //set
         for (int i = 0; i < 1000000; i++)
         	__asm__("nop");
 
-        (*(volatile unsigned int*)(AHB2_GPIOB_BASE + GPIO_BSRR_OFFSET)) |= (1 << (PB3_SHIFT + 16) );	//reset
+        (*(volatile unsigned int*)(AHB2_GPIOB_BASE + GPIO_BSRR_OFFSET)) |= (1 << (PB3_SHIFT + 16) ); //reset
         for (int i = 0; i < 1000000; i++)
         	__asm__("nop");
     }
